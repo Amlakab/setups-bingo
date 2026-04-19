@@ -890,7 +890,7 @@ const FetaBingoPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Additional Downloads Info */}
+          {/* Additional  Downloads Info */}
           <div style={{ marginTop: '3rem', textAlign: 'center' }}>
             <div className="badge">🎁 Additional Downloads</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', marginTop: '1.5rem' }}>
