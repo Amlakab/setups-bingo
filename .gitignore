@@ -1,0 +1,34 @@
+# dependencies
+
+
+# build outputs
+.next/
+dist/
+build/
+
+# environment variables
+.env
+.env.local
+.env.production
+.env.development
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# editor files
+.vscode/
+.idea/
+node_modules
+*.exe
+public/downloads/*.exe
+
+# Large desktop installer (use GitHub Releases instead)
+*.exe
+Feta Bingo Setup*.exe
+public/downloads/*.exe
