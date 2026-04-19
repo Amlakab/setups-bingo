@@ -48,7 +48,7 @@ const FetaBingoPage: React.FC = () => {
     }
   };
 
-  const handleDownload = (fileType: 'apk' | 'exe') => {
+  const handleDownload = (fileType: 'apk' | 'exe' | 'bingo-apk' | 'pdf') => {
     if (fileType === 'apk') {
       const link = document.createElement('a');
       link.href = '/downloads/app-debug.apk';
@@ -56,10 +56,24 @@ const FetaBingoPage: React.FC = () => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    } else {
+    } else if (fileType === 'exe') {
       const link = document.createElement('a');
       link.href = '/downloads/Feta Bingo Setup 0.1.0.exe';
       link.download = 'Feta Bingo Setup 0.1.0.exe';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else if (fileType === 'bingo-apk') {
+      const link = document.createElement('a');
+      link.href = '/downloads/bingo-card.apk';
+      link.download = 'bingo-card.apk';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else if (fileType === 'pdf') {
+      const link = document.createElement('a');
+      link.href = '/downloads/bingo-cartela.pdf';
+      link.download = 'bingo-cartela.pdf';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -244,8 +258,8 @@ const FetaBingoPage: React.FC = () => {
 
         .download-card {
           flex: 1;
-          min-width: 280px;
-          max-width: 400px;
+          min-width: 250px;
+          max-width: 350px;
           background: #f0fdfa;
           border: 1px solid #ccfbf1;
           border-radius: 2rem;
@@ -488,23 +502,23 @@ const FetaBingoPage: React.FC = () => {
         }
 
         .download-icon {
-          font-size: 4rem;
+          font-size: 3.5rem;
           margin-bottom: 1rem;
         }
 
         h3 {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           margin-bottom: 0.5rem;
           color: #111827;
         }
 
         .download-card p {
           color: #6b7280;
-          font-size: 0.9rem;
+          font-size: 0.85rem;
         }
 
         .file-size {
-          font-size: 0.8rem;
+          font-size: 0.75rem;
           color: #6b7280;
           margin-top: 0.5rem;
         }
@@ -571,6 +585,18 @@ const FetaBingoPage: React.FC = () => {
 
           .platform-title {
             font-size: 1.2rem;
+          }
+          
+          .download-card {
+            min-width: 220px;
+          }
+          
+          .download-icon {
+            font-size: 2.5rem;
+          }
+          
+          h3 {
+            font-size: 1.1rem;
           }
         }
       `}</style>
@@ -718,7 +744,7 @@ const FetaBingoPage: React.FC = () => {
           <h2>Get Feta Bingo Today!</h2>
           <p>Choose your platform and start playing in minutes</p>
           <div className="download-cards">
-            {/* Android Download */}
+            {/* Android Main App Download */}
             <div
               className="download-card"
               onClick={() => handleDownload('apk')}
@@ -727,10 +753,10 @@ const FetaBingoPage: React.FC = () => {
               onKeyDown={(e) => e.key === 'Enter' && handleDownload('apk')}
             >
               <div className="download-icon">📱</div>
-              <h3>Android</h3>
-              <p>Download APK file for Android devices</p>
+              <h3>Feta Bingo App</h3>
+              <p>Main Android application</p>
               <div className="file-name">app-debug.apk</div>
-              <div className="file-size">~45 MB</div>
+              <div className="file-size">~30 MB</div>
               <div className="version">Version 0.1.0</div>
             </div>
 
@@ -743,11 +769,43 @@ const FetaBingoPage: React.FC = () => {
               onKeyDown={(e) => e.key === 'Enter' && handleDownload('exe')}
             >
               <div className="download-icon">💻</div>
-              <h3>Windows</h3>
-              <p>Download EXE installer for Windows PC</p>
+              <h3>Feta Bingo for Windows</h3>
+              <p>Desktop application for PC</p>
               <div className="file-name">Feta Bingo Setup 0.1.0.exe</div>
-              <div className="file-size">~78 MB</div>
+              <div className="file-size">~154 MB</div>
               <div className="version">Version 0.1.0</div>
+            </div>
+
+            {/* Bingo Card App Download */}
+            <div
+              className="download-card"
+              onClick={() => handleDownload('bingo-apk')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleDownload('bingo-apk')}
+            >
+              <div className="download-icon">🎴</div>
+              <h3>Bingo Card App</h3>
+              <p>Standalone bingo card generator</p>
+              <div className="file-name">bingo-card.apk</div>
+              <div className="file-size">~25 MB</div>
+              <div className="version">Version 1.0.0</div>
+            </div>
+
+            {/* PDF Bingo Cartela Download */}
+            <div
+              className="download-card"
+              onClick={() => handleDownload('pdf')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleDownload('pdf')}
+            >
+              <div className="download-icon">📄</div>
+              <h3>Bingo Cartela PDF</h3>
+              <p>Printable bingo cards in PDF format</p>
+              <div className="file-name">bingo-cartela.pdf</div>
+              <div className="file-size">~2 MB</div>
+              <div className="version">Version 1.0.0</div>
             </div>
           </div>
         </div>
@@ -774,7 +832,7 @@ const FetaBingoPage: React.FC = () => {
               <ul className="steps-list">
                 <li>
                   <span className="step-number-small">1</span>
-                  <span>Download <strong>app-debug.apk</strong> from the Download section</span>
+                  <span>Download <strong>app-debug.apk</strong> (30 MB) from the Download section</span>
                 </li>
                 <li>
                   <span className="step-number-small">2</span>
@@ -793,7 +851,7 @@ const FetaBingoPage: React.FC = () => {
                   <span>Tap "Open" to launch Feta Bingo and start playing!</span>
                 </li>
               </ul>
-              <div className="file-name">File: app-debug.apk (45 MB)</div>
+              <div className="file-name">File: app-debug.apk (30 MB)</div>
             </div>
 
             {/* Desktop Installation Guide */}
@@ -805,7 +863,7 @@ const FetaBingoPage: React.FC = () => {
               <ul className="steps-list">
                 <li>
                   <span className="step-number-small">1</span>
-                  <span>Download <strong>Feta Bingo Setup 0.1.0.exe</strong> from the Download section</span>
+                  <span>Download <strong>Feta Bingo Setup 0.1.0.exe</strong> (154 MB) from the Download section</span>
                 </li>
                 <li>
                   <span className="step-number-small">2</span>
@@ -828,7 +886,26 @@ const FetaBingoPage: React.FC = () => {
                   <span>Click "Finish" and launch Feta Bingo from your desktop or Start Menu</span>
                 </li>
               </ul>
-              <div className="file-name">File: Feta Bingo Setup 0.1.0.exe (78 MB)</div>
+              <div className="file-name">File: Feta Bingo Setup 0.1.0.exe (154 MB)</div>
+            </div>
+          </div>
+
+          {/* Additional Downloads Info */}
+          <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+            <div className="badge">🎁 Additional Downloads</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', marginTop: '1.5rem' }}>
+              <div style={{ background: '#f0fdfa', border: '1px solid #ccfbf1', borderRadius: '1rem', padding: '1rem', minWidth: '200px' }}>
+                <div style={{ fontSize: '2rem' }}>🎴</div>
+                <div style={{ fontWeight: 'bold', marginTop: '0.5rem', color: '#0d9488' }}>Bingo Card App</div>
+                <div style={{ fontSize: '0.8rem', color: '#6b7280' }}>bingo-card.apk (25 MB)</div>
+                <div style={{ fontSize: '0.7rem', color: '#9ca3af', marginTop: '0.3rem' }}>Standalone card generator</div>
+              </div>
+              <div style={{ background: '#f0fdfa', border: '1px solid #ccfbf1', borderRadius: '1rem', padding: '1rem', minWidth: '200px' }}>
+                <div style={{ fontSize: '2rem' }}>📄</div>
+                <div style={{ fontWeight: 'bold', marginTop: '0.5rem', color: '#0d9488' }}>Bingo Cartela PDF</div>
+                <div style={{ fontSize: '0.8rem', color: '#6b7280' }}>bingo-cartela.pdf (2 MB)</div>
+                <div style={{ fontSize: '0.7rem', color: '#9ca3af', marginTop: '0.3rem' }}>Printable cards</div>
+              </div>
             </div>
           </div>
         </div>
